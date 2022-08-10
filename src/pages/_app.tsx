@@ -75,7 +75,8 @@ function MyApp({ Component, pageProps }: AppProps) {
             const accounts = await ethereum.request({
                 method: "eth_requestAccounts",
             });
-
+            await window.ethereum.request({method: 'wallet_switchEthereumChain', params: [{chainId: '0x5'}]});
+            console.log("Available accounts: ", accounts);
             setAccount(accounts[0]);
         } catch (error) {
             console.log("Error: ", error);
